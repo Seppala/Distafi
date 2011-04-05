@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block app %}
+
+<p id="demo">Meet your distance.</p>
+<div id="helpnote">
+	<ul>
+		<li>Click on the club when you're at your ball.</li> 
+		<li>Hit your shot, walk to the ball again and click "calculate". </li>
+		<ul>
+			<li>The distance for that club will then be calculated.</li>
+		</ul>
+		<li>Click save to save. </li>
+		<li>Click "cancel" to reset the distance counter.</li>
+	</ul>	
+			
+	</div>
+<div id="finishDiv">
+	<table>
+		<tr>
+			<td>Calculate</td>
+			<td id="calcSave">Save</td>
+			<td>Cancel</td>
+		</tr>
+</div>
+	<button id="btnInit" >Find my location</button> 
+	<button id="dist">Calculate the distance</button>
+<table>
+	<tr>
+		<th colspan="4">Woods</th>
+	</tr>
+	<tr>
+		<td colspan="2">Driver</td><td colspan="2">3</td><td>5</td>
+	</tr>
+	<tr>
+		<td>7</td><td>9</td><td colspan="2">rescue</td>
+	</tr>
+	<tr>
+		<th colspan="4">Irons</th>
+	</tr>
+	<tr>
+		<td>3</td><td>4</td><td>5</td><td>6</td>
+	</tr>
+	<tr>
+		<td>7</td><td>8</td><td>9</td><td>PW</td>
+	</tr>	
+	<tr>
+		<td>SW</td><td>GW</td><td>LW</td><td>xW</td>
+	</tr>
+</table>	
+
+<button type="button" onclick="displayDate()">Display Date</button>
+
+{% endblock %}
