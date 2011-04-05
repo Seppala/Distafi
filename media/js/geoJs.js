@@ -10,17 +10,19 @@ jQuery(window).ready(function(){
 			// navigator.geolocation.getCurrentPosition(calculate_distanceH,handle_errors);
 			
         }
-
+		
+		//function startPoint(position)
+			
 		
 		function calculateSpot(position)
 		{
 			var startingPoint = position;
 			var pointAccur = position.coords.accuracy;
 			
-			document.getElementById("demo").innerHTML= 'Accuracy: ' + pointAccur;
-			
+			document.getElementById("accuracy").innerHTML= pointAccur;
+			document.getElementById("longitude").innerHTML= position.coords.longitude;
+			document.getElementById("latitude").innerHTML= position.coords.latitude;
 			//alert('Lat: ' + position.coords.latitude + 'Lon: ' + position.coords.longitude + 'accuracy: ' + pointAccur);
-			
 			
 		}
 		

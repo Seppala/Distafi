@@ -15,16 +15,31 @@
 	</ul>	
 			
 	</div>
+<div id="numbers">
+	<table id="numbTable" >
+		<tr><td>Accuracy</td><td id="accuracy">&nbsp;</td></tr>
+		<tr><td>Latitude</td><td id="latitude">&nbsp;</td></tr>
+		<tr><td>Longitude</td><td id="longitude">&nbsp;</td></tr>
+		<tr><td>Distance</td><td id="distance">&nbsp;</td></tr>
+	</table>
+
+</div>
+<div>
+	<table>
+		<tr>
+			<td><a href="#" id="setStart" onclick"startPoint()">This is where I shot from</a>
+			<td><a href="#" id="reset" onclick="stopWatch()">Reset shot point</a></td>
+		</tr>
+	</table>
+				
 <div id="finishDiv">
 	<table>
 		<tr>
-			<td>Calculate</td>
+			<td id="calc">Calculate</td>
 			<td id="calcSave">Save</td>
 			<td>Cancel</td>
 		</tr>
 </div>
-<label for="latitude">Latitude: </label><input id="latitude" /> <br />
-<label for="longitude">Longitude: </label><input id="longitude" /> <br />
 <table>
 	<tr>
 		<th colspan="4">Woods</th>
@@ -49,8 +64,6 @@
 	</tr>
 </table>	
 <form>
-     <input type="button" onclick="getLocationUpdate();"  
-                             value="Watch Update"/>
      <input type="button" onclick="stopWatch();"  
                              value="Stop Watch"/>
    </form>
