@@ -23,14 +23,14 @@
 			<td>Cancel</td>
 		</tr>
 </div>
-	<button id="btnInit" >Find my location</button> 
-	<button id="dist">Calculate the distance</button>
+<label for="latitude">Latitude: </label><input id="latitude" /> <br />
+<label for="longitude">Longitude: </label><input id="longitude" /> <br />
 <table>
 	<tr>
 		<th colspan="4">Woods</th>
 	</tr>
 	<tr>
-		<td colspan="2">Driver</td><td colspan="2">3</td><td>5</td>
+		<td colspan="2"><a href="#" class="club">Driver</a></td><td colspan="2">3</td><td>5</td>
 	</tr>
 	<tr>
 		<td>7</td><td>9</td><td colspan="2">rescue</td>
@@ -48,7 +48,11 @@
 		<td>SW</td><td>GW</td><td>LW</td><td>xW</td>
 	</tr>
 </table>	
-
-<button type="button" onclick="displayDate()">Display Date</button>
+<form>
+     <input type="button" onclick="getLocationUpdate();"  
+                             value="Watch Update"/>
+     <input type="button" onclick="stopWatch();"  
+                             value="Stop Watch"/>
+   </form>
 
 {% endblock %}

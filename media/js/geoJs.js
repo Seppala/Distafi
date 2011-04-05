@@ -1,10 +1,33 @@
 jQuery(window).ready(function(){
-            jQuery("#btnInit").click(initiate_geolocation);
-        });
+        
+			jQuery(".club").click(initiate_geolocation);
+    	});
 
         function initiate_geolocation() {
-            navigator.geolocation.getCurrentPosition(calculate_distanceH,handle_errors);
+            var startpoint = navigator.geolocation.watchPosition(calculateSpot, handle_errors, {enableHighAccuracy:true} );
+
+			// This is what worked for getting the direction directly
+			// navigator.geolocation.getCurrentPosition(calculate_distanceH,handle_errors);
+			
         }
+
+		
+		function calculateSpot(position)
+		{
+			var startingPoint = position;
+			var pointAccur = position.coords.accuracy;
+			
+			document.getElementById("demo").innerHTML= 'Accuracy: ' + pointAccur;
+			
+			//alert('Lat: ' + position.coords.latitude + 'Lon: ' + position.coords.longitude + 'accuracy: ' + pointAccur);
+			
+			
+		}
+		
+		function stopWatch() {
+		      // Cancel the updates when the user clicks a button.
+		      navigator.geolocation.clearWatch(startpoint);
+		    }
 
         function handle_errors(error)
         {
@@ -23,28 +46,20 @@ jQuery(window).ready(function(){
                 break;
             }
         }
-
+		//Gives an alert of the current latitude and longitude.
         function handle_geolocation_query(position){
             
 					alert('Lat: ' + position.coords.latitude +
                   ' Lon: ' + position.coords.longitude);
         }
 		
-		function calculate_distance(position1){
-			var point1 = new google.maps.LatLng(position1.coords.latitude, position1.coords.longitude);
-			var point2 = new google.maps.LatLng(60.7,25.8);
-			var dist = google.maps.geometry.spherical.computeDistanceBetween(point1, point2);
-			alert('distance:' + dist);
-			
-		
-		}
-		
-		function calculate_distanceH(position1){
+		//Calculates the distance between position1 and position2
+		function calculate_distanceH(position1, position2){
 			var R = 6371; // km
 			var lat1 = position1.coords.latitude;
 			var lon1 = position1.coords.longitude;
-			var lat2 = 60.7;
-			var lon2 = 25.8;
+			var lat2 = position2.coords.latitude;
+			var lon2 = position2.coords.longitude;
 			
 			var dLat = (lat2-lat1).toRad();
 			var dLon = (lon2-lon1).toRad();
