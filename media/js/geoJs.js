@@ -1,25 +1,39 @@
 jQuery(window).ready(function(){
-        
+        	
+			//When one of the club links is clicked the geolocation is started
 			jQuery(".club").click(initiate_geolocation);
-    	});
-
-jQuery(window).ready(function(){
-
-			jQuery(".setStart").click(initiate_secondgeo);
+			
+			//When calculate is clicked the geoposition for the second place(where the ball landed) 
+			//is calculated and the distance also calculated and shown to the user
+			jQuery("#calculate").click(initiate_secondgeo);
+			
+			//When "save" is clicked the shot metrics (geopositions, club and distance) are saved.
+			jQuery("#saveShot").click(saveShot);
+			
+			var clubId;
+			jQuery(".club").click(function() {
+				clubId = $(this).attr("id");
+				localStorage.setItem("currentClub", clubId);
+				document.getElementById("club").innerHTML= clubId;
+				
+			});
 		});
 		
+		
+		// startpoint is a variable that is used to store the starting location of a shot. 
 		var startpoint
 		
+		//initiates a geolocation and sends it to calculateSpot that calculates and gives location to user
         function initiate_geolocation() {
             startpoint = navigator.geolocation.watchPosition(calculateSpot, handle_errors, {enableHighAccuracy:true} );
-
-			// This is what worked for getting the direction directly
-			// navigator.geolocation.getCurrentPosition(calculate_distanceH,handle_errors);
 			
         }
-
+		//the endpoint variable is used to store the ending location of a shot or another place compared to where the shot was
+		//hit from
+		var endpoint
+		
 		function initiate_secondgeo() {
-			var endpoint = navigator.geolocation.watchPosition(calculate_distanceH, handle_errors, {enableHighAccuracy:true} );
+			endpoint = navigator.geolocation.watchPosition(calculate_distanceH, handle_errors, {enableHighAccuracy:true} );
 		}
 		
 		//Shows the spot and accuracy to the user
@@ -56,7 +70,7 @@ jQuery(window).ready(function(){
 				alert('Your browser does not support HTML5 localStorage. Try upgrading.');
 			} else {
 				try {
-					localStorage.setItem("savedPos", startPos); //saves to the database, "key", "value"
+					localStorage.setItem("savedPos", JSON.stringify(startPos)); //saves to the database, "key", "value"
 				} catch (e) {
 				 	 if (e == QUOTA_EXCEEDED_ERR) {
 				 	 	 alert('Data couldnt be saved because the Quota was exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
@@ -94,6 +108,8 @@ jQuery(window).ready(function(){
                 break;
             }
         }
+		//d is the variable for the distance.
+		var d;
 		
 		//Calculates the distance between position1 and position2
 		function calculate_distanceH(position1){
@@ -101,9 +117,24 @@ jQuery(window).ready(function(){
 			var lat1 = position1.coords.latitude;
 			var lon1 = position1.coords.longitude;
 			
+			//saves the ending location (position1) to the browsers local storage
+			if (typeof(localStorage) == 'undefined' ) {
+				alert('Your browser does not support HTML5 localStorage. Try upgrading.');
+			} else {
+				try {
+					localStorage.setItem("endingPos", JSON.stringify(position1)); //saves to the database, "key", "value"
+				} catch (e) {
+				 	 if (e == QUOTA_EXCEEDED_ERR) {
+				 	 	 alert('Data couldnt be saved because the Quota was exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
+					}
+				}
+
+			}
 			//fetches the position that has been saved
 			try {
-				var savedPost = localStorage.getItem("savedPos"); //Hello World!
+				var savedPost = localStorage.getItem("savedPos"); 
+				
+				savedPost = jQuery.parseJSON( savedPost );
 			} catch (e) {
 				
 				alert('Couldnt fetch the location where the ball was hit from? Did you remember to set it? Sorry about that.');
@@ -124,15 +155,41 @@ jQuery(window).ready(function(){
 			        Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
 			        Math.sin(dLon/2) * Math.sin(dLon/2); 
 			var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-			var d = (R * c)*1000;
-			document.getElementById("distance").innerHTML= d;
+			d = (R * c)*1000;
 			
-			//Delete the position that had been saved.
-			localStorage.removeItem("savedPos"); //deletes the matching item from the database
-			alert('distance:' + d + 'meters');
+			//show the distance to the user in the element with the id "distance"
+			document.getElementById("distance").innerHTML= d;
 			
 		}
 		
+		function saveShot(position) {
+			//Create a shot object and save it.
+			savedPos = localStorage.getItem("savedPos");
+			savedEnd = localStorage.getItem("savedEnd");
+			clubId = localStorage.getItem("currentClub");
+			
+			//Create the shot object
+			var shot = {'club': clubId, 'start': savedPos, 'end': savedEnd, 'distance': d};
+			//create a unique ID for the object.
+			var newDate = new Date();
+			var itemId = newDate.getTime();
+			
+			try {
+				localStorage.setItem("shot" + itemId, JSON.stringify(shot)); //saves to the database, "key", "value"
+				alert('Shot saved! You shot ' + d + ' meters with your ' + clubId);
+				
+			} catch (e) {
+			 	 if (e == QUOTA_EXCEEDED_ERR) {
+			 	 	 alert('For some reason we couldnt save this shot');
+				}
+			}
+			//delete the locally saved positions for shots.
+			
+			//Delete the position that had been saved.
+			localStorage.removeItem("savedPos"); 
+			localStorage.removeItem("savedEnd");
+			stopWatch();
+		}
 		if (typeof(Number.prototype.toRad) === "undefined") {
 		  Number.prototype.toRad = function() {
 		    return this * Math.PI / 180;

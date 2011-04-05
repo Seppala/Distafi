@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>../../../Dropbox/Learness/templates/base.html</string>
+	<string>../../../Dropbox/Learness/flow/models.py</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -12,6 +12,8 @@
 				<dict>
 					<key>filename</key>
 					<string>../../../Dropbox/Learness/flow/models.py</string>
+					<key>lastUsed</key>
+					<date>2011-04-05T06:20:23Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -35,15 +37,28 @@
 					<key>filename</key>
 					<string>../../../Dropbox/Learness/templates/base.html</string>
 					<key>lastUsed</key>
-					<date>2011-04-04T09:04:56Z</date>
-					<key>selected</key>
-					<true/>
+					<date>2011-04-05T06:20:23Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>../../../Dropbox/Learness/urls.py</string>
 					<key>lastUsed</key>
 					<date>2011-04-04T09:02:38Z</date>
+				</dict>
+				<dict>
+					<key>children</key>
+					<array>
+						<dict>
+							<key>filename</key>
+							<string>../../Javascript/monkeeTime_original.js</string>
+							<key>selected</key>
+							<true/>
+						</dict>
+					</array>
+					<key>expanded</key>
+					<true/>
+					<key>name</key>
+					<string>examples</string>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -56,6 +71,36 @@
 	<integer>200</integer>
 	<key>metaData</key>
 	<dict>
+		<key>../../../Dropbox/Learness/flow/models.py</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>40</integer>
+				<key>line</key>
+				<integer>79</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>0</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>28</integer>
+				<key>line</key>
+				<integer>79</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>42</integer>
+				<key>line</key>
+				<integer>79</integer>
+			</dict>
+		</dict>
 		<key>../../../Dropbox/Learness/flow/urls.py</key>
 		<dict>
 			<key>caret</key>
@@ -182,10 +227,11 @@
 		<string>../../../Dropbox/Learness/flow/views.py</string>
 		<string>../../../Dropbox/Learness/settings.py</string>
 		<string>../../../Dropbox/Learness/templates/base.html</string>
+		<string>../../../Dropbox/Learness/flow/models.py</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{252, -37}, {1015, 729}}</string>
+	<string>{{253, -28}, {1015, 729}}</string>
 </dict>
 </plist>
