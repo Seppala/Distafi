@@ -26,7 +26,7 @@ jQuery(window).ready(function(){
 		//initiates a geolocation and sends it to calculateSpot that calculates and gives location to user
         function initiate_geolocation() {
             startpoint = navigator.geolocation.watchPosition(calculateSpot, handle_errors, {enableHighAccuracy:true} );
-			
+			document.getElementById("status").innerHTML= 'acquiring geolocation for startposition';
         }
 		//the endpoint variable is used to store the ending location of a shot or another place compared to where the shot was
 		//hit from
@@ -34,6 +34,7 @@ jQuery(window).ready(function(){
 		
 		function initiate_secondgeo() {
 			endpoint = navigator.geolocation.watchPosition(calculate_distanceH, handle_errors, {enableHighAccuracy:true} );
+			document.getElementById("status").innerHTML= 'Acquiring geolocation for endposition';
 		}
 		
 		//Shows the spot and accuracy to the user
@@ -83,12 +84,18 @@ jQuery(window).ready(function(){
 			
 			//stops the geolocation
 			stopWatch();
+			document.getElementById("status").innerHTML= 'Saved shot location, stopped geolocation';
 			
 		}
 		
 		function stopWatch() {
 		      // Cancel the updates when the user clicks a button.
 		      navigator.geolocation.clearWatch(startpoint);
+		    }
+		
+		function stopWatchEnd() {
+		      // Cancel the updates when the user clicks a button.
+		      navigator.geolocation.clearWatch(endpoint);
 		    }
 
         function handle_errors(error)
@@ -144,7 +151,7 @@ jQuery(window).ready(function(){
 				var lat2 = savedPost.coords.latitude;
 				var lon2 = savedPost.coords.longitude;
 			} catch (f) {
-				alert('Couldnt get the second coordinates. Cant fetch your current position.')
+				document.getElementById("status").innerHTML= 'Theres no position saved, click "hit from here" first ' + d + ' meters with your ' + clubId;
 			}
 			
 			//Calculate the distance d from the saved position to the new fetched position.
@@ -159,8 +166,12 @@ jQuery(window).ready(function(){
 			
 			//show the distance to the user in the element with the id "distance"
 			document.getElementById("distance").innerHTML= d;
+			stopWatchEnd();
+			document.getElementById("status").innerHTML= 'Calculated distance, stopped geolocation';
 			
 		}
+		
+		// Saves the shot, creates a shot object and stores the new shot object.
 		
 		function saveShot(position) {
 			//Create a shot object and save it.
@@ -176,7 +187,7 @@ jQuery(window).ready(function(){
 			
 			try {
 				localStorage.setItem("shot" + itemId, JSON.stringify(shot)); //saves to the database, "key", "value"
-				alert('Shot saved! You shot ' + d + ' meters with your ' + clubId);
+				document.getElementById("status").innerHTML= 'Shot saved! You shot ' + d + ' meters with your ' + clubId;
 				
 			} catch (e) {
 			 	 if (e == QUOTA_EXCEEDED_ERR) {
@@ -189,7 +200,11 @@ jQuery(window).ready(function(){
 			localStorage.removeItem("savedPos"); 
 			localStorage.removeItem("savedEnd");
 			stopWatch();
+			
 		}
+		
+		
+		//torad function turns degrees into radians
 		if (typeof(Number.prototype.toRad) === "undefined") {
 		  Number.prototype.toRad = function() {
 		    return this * Math.PI / 180;
