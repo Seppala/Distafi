@@ -10,6 +10,8 @@ jQuery(window).ready(function(){
 			//When "save" is clicked the shot metrics (geopositions, club and distance) are saved.
 			jQuery("#saveShot").click(saveShot);
 			
+			//When "save" is clicked the shot metrics (geopositions, club and distance) are saved.
+			
 			var clubId;
 			jQuery(".club").click(function() {
 				clubId = $(this).attr("id");
@@ -51,6 +53,7 @@ jQuery(window).ready(function(){
 			document.getElementById("accuracy").innerHTML= pointAccur;
 			document.getElementById("longitude").innerHTML= startPos.coords.longitude;
 			document.getElementById("latitude").innerHTML= startPos.coords.latitude;
+			document.getElementById("status").innerHTML= 'Calculating position and accuracy for the shot';
 			
 			//When the startcalculate button is pressed, save the result in the startPos variable.
 			
@@ -84,7 +87,7 @@ jQuery(window).ready(function(){
 			
 			//stops the geolocation
 			stopWatch();
-			document.getElementById("status").innerHTML= 'Saved shot location, stopped geolocation';
+			document.getElementById("status").innerHTML= 'Saved location for where the shot was taken from';
 			
 		}
 		
@@ -115,6 +118,34 @@ jQuery(window).ready(function(){
                 break;
             }
         }
+	
+		//saves the ending location (position1) to the browsers local storage
+		function saveEnd() {
+		
+		
+		try {
+			var savedPost = localStorage.getItem("tempEndigPos"); 
+				
+			//savedPost = jQuery.parseJSON( savedPost );
+		} catch (e) {
+				
+			alert('You shouldnt have to go through this. We Couldnt fetch the ending location for your shot? Did you press calculate to calculat the distance first? If you did, hit us an email at riku@seppa.la and well take care of that!');
+			return;
+		}
+		
+		if (typeof(localStorage) == 'undefined' ) {
+			alert('Your browser does not support HTML5 localStorage. Try upgrading.');
+		} else {
+			try {
+				localStorage.setItem("savedEnd", JSON.stringify(savedPost)); //saves to the database, "key", "value"
+			} catch (e) {
+			 	 if (e == QUOTA_EXCEEDED_ERR) {
+			 	 	 alert('Data couldnt be saved because the Quota was exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
+				}
+			}
+
+		}
+		}
 		//d is the variable for the distance.
 		var d;
 		
@@ -124,19 +155,6 @@ jQuery(window).ready(function(){
 			var lat1 = position1.coords.latitude;
 			var lon1 = position1.coords.longitude;
 			
-			//saves the ending location (position1) to the browsers local storage
-			if (typeof(localStorage) == 'undefined' ) {
-				alert('Your browser does not support HTML5 localStorage. Try upgrading.');
-			} else {
-				try {
-					localStorage.setItem("endingPos", JSON.stringify(position1)); //saves to the database, "key", "value"
-				} catch (e) {
-				 	 if (e == QUOTA_EXCEEDED_ERR) {
-				 	 	 alert('Data couldnt be saved because the Quota was exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
-					}
-				}
-
-			}
 			//fetches the position that has been saved
 			try {
 				var savedPost = localStorage.getItem("savedPos"); 
@@ -166,8 +184,23 @@ jQuery(window).ready(function(){
 			
 			//show the distance to the user in the element with the id "distance"
 			document.getElementById("distance").innerHTML= d;
-			stopWatchEnd();
-			document.getElementById("status").innerHTML= 'Calculated distance, stopped geolocation';
+			//stopWatchEnd();
+			document.getElementById("status").innerHTML= 'Calculated distance';
+			
+			if (typeof(localStorage) == 'undefined' ) {
+				alert('Your browser does not support HTML5 localStorage. Try upgrading.');
+			} else {
+				try {
+					localStorage.setItem("tempEndingPos", JSON.stringify(position1)); //saves to the database, "key", "value"
+				} catch (e) {
+				 	 if (e == QUOTA_EXCEEDED_ERR) {
+				 	 	 alert('Data couldnt be saved because the Quota was exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
+					}
+				}
+
+			}
+			
+		document.getElementById("status").innerHTML= 'Calculated the distance for the shot, acquiring best location data.';
 			
 		}
 		
