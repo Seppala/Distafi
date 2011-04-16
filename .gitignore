@@ -1,7 +1,7 @@
 settings.py
 
 *.pyc
-*.txt
+
 # Logs and databases #
 ######################
 *.log
