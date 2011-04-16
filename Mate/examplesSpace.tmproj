@@ -13,7 +13,7 @@
 					<key>filename</key>
 					<string>../../../Dropbox/Learness/flow/models.py</string>
 					<key>lastUsed</key>
-					<date>2011-04-05T18:46:52Z</date>
+					<date>2011-04-13T12:00:21Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -76,30 +76,14 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>40</integer>
+				<integer>27</integer>
 				<key>line</key>
-				<integer>79</integer>
+				<integer>68</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>28</integer>
-				<key>line</key>
-				<integer>79</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>42</integer>
-				<key>line</key>
-				<integer>79</integer>
-			</dict>
+			<integer>0</integer>
 		</dict>
 		<key>../../../Dropbox/Learness/flow/urls.py</key>
 		<dict>

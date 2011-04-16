@@ -6,8 +6,11 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     
-	(r'^$', 'shotcount.views.app'),
+	(r'^$', 'shotcount.views.index'),
 	#(r'^$', include('shots.shotcount.urlsShc')),
+	
+	(r'^about/', 'shotcount.views.about'),
+	(r'^iphone/', 'shotcount.views.iphone'),
 	
 	(r'^site_media/(?P<path>.*)$', 'django.views.static.serve', 
 	{'document_root': '/Users/rikuseppala/Development/shots/media'}),

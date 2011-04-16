@@ -1,7 +1,15 @@
+//Button listeners
+
 jQuery(window).ready(function(){
         	
+			//<td><a href="#" id="setStart" onclick="saveStartPos(startPos)">Click here to confirm beginning location of the shot.</a>
+			
+			//Click on start 
+			
 			//When one of the club links is clicked the geolocation is started
 			jQuery(".club").click(initiate_geolocation);
+			
+			//jQuery("#setStart").click(saveStartPos(startPos));
 			
 			//When calculate is clicked the geoposition for the second place(where the ball landed) 
 			//is calculated and the distance also calculated and shown to the user
@@ -21,23 +29,18 @@ jQuery(window).ready(function(){
 			});
 		});
 		
-		
-		// startpoint is a variable that is used to store the starting location of a shot. 
-		var startpoint
+		// How it works:
+		// 1. Click on a club that fetches current geolocation. (initate_geolocation)
+		// 2. Calculate the and show the coordinates to the user (calculateSpot)
+		// 3. When the coordinates are accurate enough, the user saves the location saveStartLoc (save)
+		// 4. At ball, acquire new coordinates ()
 		
 		//initiates a geolocation and sends it to calculateSpot that calculates and gives location to user
         function initiate_geolocation() {
-            startpoint = navigator.geolocation.watchPosition(calculateSpot, handle_errors, {enableHighAccuracy:true} );
+            var startpoint = navigator.geolocation.watchPosition(calculateSpot, handle_errors, {enableHighAccuracy:true} );
 			document.getElementById("status").innerHTML= 'acquiring geolocation for startposition';
         }
-		//the endpoint variable is used to store the ending location of a shot or another place compared to where the shot was
-		//hit from
-		var endpoint
 		
-		function initiate_secondgeo() {
-			endpoint = navigator.geolocation.watchPosition(calculate_distanceH, handle_errors, {enableHighAccuracy:true} );
-			document.getElementById("status").innerHTML= 'Acquiring geolocation for endposition';
-		}
 		
 		//Shows the spot and accuracy to the user
 		
@@ -55,11 +58,6 @@ jQuery(window).ready(function(){
 			document.getElementById("latitude").innerHTML= startPos.coords.latitude;
 			document.getElementById("status").innerHTML= 'Calculating position and accuracy for the shot';
 			
-			//When the startcalculate button is pressed, save the result in the startPos variable.
-			
-			//When the calculate button is pressed, if the startPos variable isn't null, calculate the distance 
-			
-			//Save all the info as a shot.
 			
 		}
 		
@@ -91,61 +89,15 @@ jQuery(window).ready(function(){
 			
 		}
 		
-		function stopWatch() {
-		      // Cancel the updates when the user clicks a button.
-		      navigator.geolocation.clearWatch(startpoint);
-		    }
+		//the endpoint variable is used to store the ending location of a shot or another place compared to where the shot was
+		//hit from
+		var endpoint
 		
-		function stopWatchEnd() {
-		      // Cancel the updates when the user clicks a button.
-		      navigator.geolocation.clearWatch(endpoint);
-		    }
-
-        function handle_errors(error)
-        {
-            switch(error.code)
-            {
-                case error.PERMISSION_DENIED: alert("user did not share geolocation data");
-                break;
-
-                case error.POSITION_UNAVAILABLE: alert("could not detect current position");
-                break;
-
-                case error.TIMEOUT: alert("retrieving position timed out");
-                break;
-
-                default: alert("unknown error");
-                break;
-            }
-        }
-	
-		//saves the ending location (position1) to the browsers local storage
-		function saveEnd() {
-		
-		
-		try {
-			var savedPost = localStorage.getItem("tempEndigPos"); 
-				
-			//savedPost = jQuery.parseJSON( savedPost );
-		} catch (e) {
-				
-			alert('You shouldnt have to go through this. We Couldnt fetch the ending location for your shot? Did you press calculate to calculat the distance first? If you did, hit us an email at riku@seppa.la and well take care of that!');
-			return;
+		function initiate_secondgeo() {
+			endpoint = navigator.geolocation.watchPosition(calculate_distanceH, handle_errors, {enableHighAccuracy:true} );
+			document.getElementById("status").innerHTML= 'Acquiring geolocation for endposition';
 		}
 		
-		if (typeof(localStorage) == 'undefined' ) {
-			alert('Your browser does not support HTML5 localStorage. Try upgrading.');
-		} else {
-			try {
-				localStorage.setItem("savedEnd", JSON.stringify(savedPost)); //saves to the database, "key", "value"
-			} catch (e) {
-			 	 if (e == QUOTA_EXCEEDED_ERR) {
-			 	 	 alert('Data couldnt be saved because the Quota was exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
-				}
-			}
-
-		}
-		}
 		//d is the variable for the distance.
 		var d;
 		
@@ -204,6 +156,36 @@ jQuery(window).ready(function(){
 			
 		}
 		
+		
+		//saves the ending location (position1) to the browsers local storage
+		function saveEnd() {
+		
+		
+			try {
+				var savedPost = localStorage.getItem("tempEndingPos"); 
+				
+			//savedPost = jQuery.parseJSON( savedPost );
+			} catch (e) {
+				
+				alert('You shouldnt have to go through this. We Couldnt fetch the ending location for your shot? Did you press calculate to calculat the distance first? If you did, hit us an email at riku@seppa.la and well take care of that!');
+				return;
+			}
+		
+			if (typeof(localStorage) == 'undefined' ) {
+				alert('Your browser does not support HTML5 localStorage. Try upgrading.');
+			} else {
+				try {
+					localStorage.setItem("savedEnd", JSON.stringify(savedPost)); //saves to the database, "key", "value"
+				} catch (e) {
+			 	 	if (e == QUOTA_EXCEEDED_ERR) {
+			 	 	 	alert('Data couldnt be saved because the Quota was exceeded!'); //data wasn't successfully saved due to quota exceed so throw an error
+				}
+			}
+
+		}
+		document.getElementById("status").innerHTML= 'Saved the ending position for the shot';
+		}
+		
 		// Saves the shot, creates a shot object and stores the new shot object.
 		
 		function saveShot(position) {
@@ -235,6 +217,36 @@ jQuery(window).ready(function(){
 			stopWatch();
 			
 		}
+		
+		function stopWatch() {
+		      // Cancel the updates when the user clicks a button.
+		      navigator.geolocation.clearWatch(startpoint);
+		    }
+		
+		function stopWatchEnd() {
+		      // Cancel the updates when the user clicks a button.
+		      navigator.geolocation.clearWatch(endpoint);
+		    }
+
+        function handle_errors(error)
+        {
+            switch(error.code)
+            {
+                case error.PERMISSION_DENIED: alert("user did not share geolocation data");
+                break;
+
+                case error.POSITION_UNAVAILABLE: alert("could not detect current position");
+                break;
+
+                case error.TIMEOUT: alert("retrieving position timed out");
+                break;
+
+                default: alert("unknown error");
+                break;
+            }
+        }
+	
+		
 		
 		
 		//torad function turns degrees into radians
