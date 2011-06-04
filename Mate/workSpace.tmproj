@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>currentDocument</key>
-	<string>../templates/shotcount/index.html</string>
+	<string>../templates/base.html</string>
 	<key>documents</key>
 	<array>
 		<dict>
@@ -52,57 +52,61 @@
 					<key>filename</key>
 					<string>../templates/base.html</string>
 					<key>lastUsed</key>
-					<date>2011-04-13T14:47:03Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>../templates/shotcount/about.html</string>
-					<key>lastUsed</key>
-					<date>2011-04-13T14:47:14Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>../templates/shotcount/index.html</string>
-					<key>lastUsed</key>
-					<date>2011-04-13T15:19:49Z</date>
+					<date>2011-05-26T23:04:16Z</date>
 					<key>selected</key>
 					<true/>
 				</dict>
 				<dict>
 					<key>filename</key>
+					<string>../templates/shotcount/about.html</string>
+					<key>lastUsed</key>
+					<date>2011-04-16T17:17:13Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>../templates/shotcount/index.html</string>
+					<key>lastUsed</key>
+					<date>2011-04-16T17:36:27Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
 					<string>../media/js/baseJs.js</string>
 					<key>lastUsed</key>
-					<date>2011-04-13T14:20:36Z</date>
+					<date>2011-04-16T13:38:38Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>../media/js/geoJs.js</string>
 					<key>lastUsed</key>
-					<date>2011-04-13T15:16:11Z</date>
+					<date>2011-04-16T20:45:41Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>../media/style.css</string>
 					<key>lastUsed</key>
-					<date>2011-04-13T15:19:49Z</date>
-				</dict>
-				<dict>
-					<key>filename</key>
-					<string>../templates/iphone.html</string>
-					<key>lastUsed</key>
-					<date>2011-04-13T14:00:11Z</date>
+					<date>2011-04-16T16:53:41Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>../media/iphonestyle.css</string>
 					<key>lastUsed</key>
-					<date>2011-04-13T14:22:49Z</date>
+					<date>2011-04-16T14:56:52Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>../media/js/iphonejs.js</string>
 					<key>lastUsed</key>
-					<date>2011-04-13T14:17:52Z</date>
+					<date>2011-04-16T15:11:01Z</date>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>../templates/shotcount/iphone.html</string>
+				</dict>
+				<dict>
+					<key>filename</key>
+					<string>../media/theme.css</string>
+					<key>lastUsed</key>
+					<date>2011-04-16T17:58:44Z</date>
 				</dict>
 			</array>
 			<key>expanded</key>
@@ -117,13 +121,13 @@
 					<key>filename</key>
 					<string>../settings.py</string>
 					<key>lastUsed</key>
-					<date>2011-04-13T12:17:04Z</date>
+					<date>2011-04-16T22:51:55Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
 					<string>../urls.py</string>
 					<key>lastUsed</key>
-					<date>2011-04-13T13:28:11Z</date>
+					<date>2011-04-16T22:50:16Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -168,7 +172,7 @@
 							<key>filename</key>
 							<string>../shotcount/views.py</string>
 							<key>lastUsed</key>
-							<date>2011-04-13T14:54:24Z</date>
+							<date>2011-04-16T14:33:11Z</date>
 						</dict>
 						<dict>
 							<key>filename</key>
@@ -198,23 +202,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>24</integer>
+				<integer>1</integer>
 				<key>line</key>
-				<integer>19</integer>
+				<integer>52</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>1</integer>
+			<integer>27</integer>
 		</dict>
 		<key>../media/js/baseJs.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>33</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>3</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -226,39 +230,23 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>18</integer>
+				<integer>6</integer>
 				<key>line</key>
-				<integer>160</integer>
+				<integer>116</integer>
 			</dict>
-			<key>columnSelection</key>
-			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>160</integer>
-			<key>selectFrom</key>
-			<dict>
-				<key>column</key>
-				<integer>11</integer>
-				<key>line</key>
-				<integer>160</integer>
-			</dict>
-			<key>selectTo</key>
-			<dict>
-				<key>column</key>
-				<integer>18</integer>
-				<key>line</key>
-				<integer>160</integer>
-			</dict>
+			<integer>95</integer>
 		</dict>
 		<key>../media/js/iphonejs.js</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>2</integer>
+				<integer>17</integer>
 				<key>line</key>
-				<integer>23</integer>
+				<integer>1</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -270,23 +258,67 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>14</integer>
+				<integer>0</integer>
 				<key>line</key>
-				<integer>141</integer>
+				<integer>44</integer>
+			</dict>
+			<key>columnSelection</key>
+			<false/>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>33</integer>
+			<key>selectFrom</key>
+			<dict>
+				<key>column</key>
+				<integer>1</integer>
+				<key>line</key>
+				<integer>53</integer>
+			</dict>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>0</integer>
+				<key>line</key>
+				<integer>44</integer>
+			</dict>
+		</dict>
+		<key>../media/theme.css</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>13</integer>
+				<key>line</key>
+				<integer>128</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>120</integer>
+			<integer>114</integer>
+		</dict>
+		<key>../settings.py</key>
+		<dict>
+			<key>caret</key>
+			<dict>
+				<key>column</key>
+				<integer>37</integer>
+				<key>line</key>
+				<integer>80</integer>
+			</dict>
+			<key>firstVisibleColumn</key>
+			<integer>0</integer>
+			<key>firstVisibleLine</key>
+			<integer>26</integer>
 		</dict>
 		<key>../shotcount/views.py</key>
 		<dict>
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>26</integer>
+				<integer>49</integer>
 				<key>line</key>
-				<integer>10</integer>
+				<integer>13</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -298,28 +330,30 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>20</integer>
+				<integer>9</integer>
 				<key>line</key>
-				<integer>28</integer>
+				<integer>8</integer>
 			</dict>
+			<key>columnSelection</key>
+			<false/>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
 			<integer>0</integer>
-		</dict>
-		<key>../templates/iphone.html</key>
-		<dict>
-			<key>caret</key>
+			<key>selectFrom</key>
 			<dict>
 				<key>column</key>
-				<integer>53</integer>
+				<integer>31</integer>
 				<key>line</key>
-				<integer>3</integer>
+				<integer>8</integer>
 			</dict>
-			<key>firstVisibleColumn</key>
-			<integer>0</integer>
-			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<key>selectTo</key>
+			<dict>
+				<key>column</key>
+				<integer>9</integer>
+				<key>line</key>
+				<integer>8</integer>
+			</dict>
 		</dict>
 		<key>../templates/shotcount/about.html</key>
 		<dict>
@@ -340,9 +374,9 @@
 			<key>caret</key>
 			<dict>
 				<key>column</key>
-				<integer>65</integer>
+				<integer>8</integer>
 				<key>line</key>
-				<integer>15</integer>
+				<integer>35</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -356,7 +390,7 @@
 				<key>column</key>
 				<integer>10</integer>
 				<key>line</key>
-				<integer>11</integer>
+				<integer>14</integer>
 			</dict>
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
@@ -371,16 +405,17 @@
 		<string>../templates/shotcount/index.html</string>
 		<string>../templates/shotcount/about.html</string>
 		<string>../templates/base.html</string>
+		<string>../media/theme.css</string>
 		<string>../media/js/geoJs.js</string>
+		<string>../settings.py</string>
 		<string>../media/js/baseJs.js</string>
 		<string>../media/style.css</string>
 		<string>../media/iphonestyle.css</string>
 		<string>../media/js/iphonejs.js</string>
-		<string>../templates/iphone.html</string>
 	</array>
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{223, 37}, {1015, 729}}</string>
+	<string>{{606, 25}, {630, 738}}</string>
 </dict>
 </plist>

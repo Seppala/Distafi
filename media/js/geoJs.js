@@ -114,7 +114,7 @@ jQuery(window).ready(function(){
 				savedPost = jQuery.parseJSON( savedPost );
 			} catch (e) {
 				
-				alert('Couldnt fetch the location where the ball was hit from? Did you remember to set it? Sorry about that.');
+				//alert('Couldnt fetch the location where the ball was hit from? Did you remember to set it? Sorry about that.');
 				return;
 			}
 			try {

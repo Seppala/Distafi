@@ -13,7 +13,7 @@
 					<key>filename</key>
 					<string>../../../Dropbox/Learness/flow/models.py</string>
 					<key>lastUsed</key>
-					<date>2011-04-13T12:00:21Z</date>
+					<date>2011-05-04T17:37:10Z</date>
 				</dict>
 				<dict>
 					<key>filename</key>
@@ -83,7 +83,7 @@
 			<key>firstVisibleColumn</key>
 			<integer>0</integer>
 			<key>firstVisibleLine</key>
-			<integer>0</integer>
+			<integer>4</integer>
 		</dict>
 		<key>../../../Dropbox/Learness/flow/urls.py</key>
 		<dict>
@@ -216,6 +216,6 @@
 	<key>showFileHierarchyDrawer</key>
 	<true/>
 	<key>windowFrame</key>
-	<string>{{253, 4}, {1015, 729}}</string>
+	<string>{{240, 4}, {1015, 729}}</string>
 </dict>
 </plist>
